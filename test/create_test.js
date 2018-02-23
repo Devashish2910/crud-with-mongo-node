@@ -8,11 +8,15 @@ const User = require('./../src/user');
 
 // test case
 describe('Creating Documents', () => {
-  it('Saves a user', () => {
+  it('Saves a user', (done) => {
     //instance of user
     const deva = new User({name: 'Devashish'});
 
     // insert instance to database
-    deva.save();
+    deva.save()
+     .then(() => {
+       assert(!deva.isNew);
+       done();
+     });
   });
 });

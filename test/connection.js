@@ -7,15 +7,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connection with MongoDB (mongodb://localhost or remote port/database_name)
-mongoose.connect('mongodb://localhost:27017/users_test', { useMongoClient: true });
+mongoose.connect('mongodb://localhost:27017/users_test');
 
 // check connection with once and on event handler
 mongoose.connection
- .once('open', () => {
-   console.log("Connected!");
- })
+ .once('open', () => {})
  .on('error', (err) => {
-   console.warn(`Warning: {err}`);
+   console.warn("Error: " + err);
  });
 
 // Hook for dropping database before each test case
