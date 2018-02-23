@@ -3,8 +3,11 @@
 // load mongoose
 const mongoose = require('mongoose');
 
+// set Promises because mongoose does not support the promises
+mongoose.Promise = global.Promise;
+
 // connection with MongoDB (mongodb://localhost or remote port/database_name)
-mongoose.connect('mongodb://localhost/users_test');
+mongoose.connect('mongodb://localhost:27017/users_test', { useMongoClient: true });
 
 // check connection with once and on event handler
 mongoose.connection
