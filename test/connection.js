@@ -14,3 +14,10 @@ mongoose.connection
  .on('error', (err) => {
    console.warn(`Warning: {err}`);
  });
+
+// Hook for dropping database before each test case
+beforeEach((done) => {
+  mongoose.connection.collections.users.drop(() => {
+    done();
+  })
+})
