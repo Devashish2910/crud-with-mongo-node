@@ -10,11 +10,13 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/users_test');
 
 // check connection with once and on event handler
-mongoose.connection
- .once('open', () => {})
- .on('error', (err) => {
-   console.warn("Error: " + err);
- });
+before((done) => {
+  mongoose.connection
+   .once('open', () => {done();})
+   .on('error', (err) => {
+     console.warn("Error: " + err);
+   });
+});
 
 // Hook for dropping database before each test case
 beforeEach((done) => {

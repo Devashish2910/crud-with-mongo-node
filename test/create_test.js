@@ -1,4 +1,4 @@
-// test case to check user is inserted or not
+// Test case to check user is inserted or not
 
 // load assert
 const assert = require('assert');
