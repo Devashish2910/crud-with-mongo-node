@@ -39,7 +39,6 @@ describe('Update Records', () => {
      });
   });
 
-
   it('Class based Update', (done) => {
     Users.update({ name: 'Devashish'}, {name: 'Bhailu'})
      .then(() => {
@@ -61,7 +60,6 @@ describe('Update Records', () => {
         });
      });
   });
-
 
   it('Class based findByIdAndUpdate', (done) => {
     Users.findByIdAndUpdate(deva._id, {name: 'Pythonist'})
