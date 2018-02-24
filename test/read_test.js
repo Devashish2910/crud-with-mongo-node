@@ -1,4 +1,4 @@
-// Test case for reading user from database
+// Test cases for reading user from database
 // (by username and Id)
 
 // load assert and User
