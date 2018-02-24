@@ -34,7 +34,7 @@ describe('Subdocument Test', () => {
            .then(() => {
              Users.findOne({name: 'Devashish'})
               .then(updatedUser => {
-                console.log(updatedUser);
+                // console.log(updatedUser);
                 const topEl = updatedUser.posts.length - 1;
                 assert(updatedUser.posts[topEl].title === 'New')
                 done();
@@ -43,4 +43,31 @@ describe('Subdocument Test', () => {
         })
      });
   });
+
+  it('Remove Post from existing User', done => {
+    const deva = new Users({
+      name: 'Devashish',
+      posts: [{title: 'First'}, {title: 'New'}]
+    });
+
+    deva.save()
+     .then(() => {
+       Users.findOne({name: 'Devashish'})
+        .then(user => {
+          user.posts.pop();
+          user.save()
+           .then(() => {
+             Users.findOne({name: 'Devashish'})
+              .then(updatedUser => {
+                const topEl = updatedUser.posts.length - 1;
+                assert(updatedUser.posts[topEl].title === 'First');
+                done();
+              });
+           })
+        });
+     });
+
+
+  });
+
 });

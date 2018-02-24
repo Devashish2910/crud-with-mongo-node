@@ -12,7 +12,7 @@ describe('Read Records', () => {
     deva = new User({name: 'Devashish'});
     deva.save()
       .then(() => {
-        done()
+        done();
       });
   });
 
