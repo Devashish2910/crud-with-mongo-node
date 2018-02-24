@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // Schema for the collection
 const Schema = mongoose.Schema;
 // import PostSchema
-const PostSchema - require('./post_schema');
+const PostSchema = require('./post_schema');
 
 // Schema set up
 const UserSchema = new Schema({
