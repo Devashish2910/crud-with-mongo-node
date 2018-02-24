@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   //Properties: types of properties
   name: {
     type: String,
-    require: [true, 'No Name!!']
+    required: [true, 'No Name!!']
   },
   postCount: Number
 });
