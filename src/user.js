@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 // Schema set up
 const UserSchema = new Schema({
   //Properties: types of properties
-  name: String
+  name: String,
+  postCount: Number
 });
 
 // Create a model

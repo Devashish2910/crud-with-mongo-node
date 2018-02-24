@@ -8,7 +8,7 @@ describe('Update Records', () => {
   let deva;
 
   beforeEach(done => {
-    deva = new Users({name: 'Devashish'});
+    deva = new Users({name: 'Devashish', postCount: 1});
     deva.save()
      .then(() => {
        done();
@@ -71,6 +71,28 @@ describe('Update Records', () => {
           assert(users.length === 1 && users[0].name === 'Pythonist');
           done();
         });
+     });
+  });
+
+  it('Increase Post Count', done => {
+    Users.findOne({name: 'Devashish'})
+     .then(user => {
+       user.update({postCount: user.postCount + 1})
+        . then(updatedUser => {
+          done();
+        })
+     })
+  });
+
+  // Increment operator in mongodb
+  it('Increment postCount', done => {
+    Users.findByIdAndUpdate(deva._id, {$inc: {postCount: 1}})
+     . then(() => {
+       Users.findById(deva._id)
+        .then(user => {
+          assert(user.postCount === 2)
+        });
+        done();
      });
   });
 
