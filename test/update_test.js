@@ -83,7 +83,7 @@ describe('Update Records', () => {
   });
 
   // Increment operator in mongodb
-  it('Increment postCount', done => {
+  xit('Increment postCount', done => {
     Users.findByIdAndUpdate(deva._id, {$inc: {postCount: 1}})
      . then(() => {
        Users.findById(deva._id)

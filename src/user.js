@@ -15,10 +15,13 @@ const UserSchema = new Schema({
     required: [true, 'No Name!!'],
     minlength: [3, 'Name must be more than 2 char long']
   },
-  postCount: Number,
-  posts: [PostSchema]
+  posts: [PostSchema],
 });
 
+// Virdtual Schema
+UserSchema.virtual('postCount').get(function() {
+  return this.posts.length;
+});
 // Create a model
 const User = mongoose.model('users', UserSchema);
 
