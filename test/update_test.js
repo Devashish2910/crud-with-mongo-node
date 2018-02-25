@@ -8,7 +8,7 @@ describe('Update Records', () => {
   let deva;
 
   beforeEach(done => {
-    deva = new Users({name: 'Devashish', postCount: 1});
+    deva = new Users({name: 'Devashish', posts: [{title: 'First blog'}]});
     deva.save()
      .then(() => {
        done();
@@ -83,12 +83,12 @@ describe('Update Records', () => {
   });
 
   // Increment operator in mongodb
-  xit('Increment postCount', done => {
+  it('Increment postCount', done => {
     Users.findByIdAndUpdate(deva._id, {$inc: {postCount: 1}})
      . then(() => {
        Users.findById(deva._id)
         .then(user => {
-          assert(user.postCount === 2)
+          assert(user.postCount === deva.posts.length)
         });
         done();
      });
