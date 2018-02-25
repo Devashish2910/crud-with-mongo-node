@@ -16,6 +16,7 @@ const UserSchema = new Schema({
     minlength: [3, 'Name must be more than 2 char long']
   },
   posts: [PostSchema],
+  likes: Number
 });
 
 // Virdtual Schema
