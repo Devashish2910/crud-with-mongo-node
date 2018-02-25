@@ -78,7 +78,7 @@ describe('Update Records', () => {
      . then((user) => {
        Users.findById(deva._id)
         .then(updatedUser => {
-          assert(user.likes === (deva.likes + 1));
+          assert(updatedUser.likes === (deva.likes + 1));
           done();
         });
 
