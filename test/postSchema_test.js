@@ -59,7 +59,7 @@ describe('Subdocument Test', () => {
            .then(() => {
              Users.findOne({name: 'Devashish'})
               .then(updatedUser => {
-                console.log(updatedUser);
+                //console.log(updatedUser);
                 const topEl = updatedUser.posts.length - 1;
                 assert(updatedUser.posts[topEl].title === 'First');
                 done();
